@@ -14,28 +14,30 @@
 </head>
 
 <body>
-    <header>
-        <iframe src="navbar.html" style="width: 100%;"></iframe>
-    </header>
-    <form class="row mb-3">
-        <div class="position-relative  shadow-none  bg-light rounded " style="width: 320px;height: 350px;">
-            <h2>Añadir Nuevo Pago</h2>
-            <input type="datetime" name="" id="" placeholder="fecha vencimiento">
-            <select class="form-select " aria-label="Default select example">
-                <option selected>Servicio</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <input type="text" placeholder="Monto">
-            <input type="button" value="Añadir">
-        </div>
-
-    </form>
-    <footer>
-        <!-- place footer here -->
-    </footer>
-    <!-- Bootstrap JavaScript Libraries -->
+    <header id="navbar-container"></header>
+    <div class="d-flex justify-content-center align-items-center border bg-light " style="height: 100%;">
+        <form style="max-width: 500px;">
+            <div class="form-group">
+                <label for="fechaVencimiento">Fecha de vencimiento</label>
+                <input type="date" class="form-control" id="fechaVencimiento">
+            </div>
+            <div class="form-group">
+                <label for="servicio">Servicio</label>
+                <select class="form-control" id="servicio">
+                    <option>Netflix</option>
+                    <option>Amazon Video</option>
+                    <option>Star+</option>
+                    <option>Paramount+</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="monto">Monto</label>
+                <input type="text" class="form-control" id="monto">
+            </div>
+            <button type="submit" class="btn btn-primary mx-auto my-sm-3" >Añadir</button>
+        </form>
+    </div>
+    <script src="js/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
         </script>

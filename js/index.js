@@ -1,7 +1,3 @@
-const loginForm = document.getElementById('login-form');
-const emailInput = document.getElementById('email-input');
-const passwordInput = document.getElementById('password-input');
-
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
@@ -9,14 +5,14 @@ loginForm.addEventListener('submit', (event) => {
   const password = passwordInput.value;
 
   // Enviar solicitud de inicio de sesión a la API
-  fetch('http://127.0.0.1:8000/users/jwt/create/', {
+  fetch('http://127.0.0.1:8000/users/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email,
-      password
+      email: email,
+      password: password
     })
   })
     .then((response) => response.json())
@@ -24,31 +20,25 @@ loginForm.addEventListener('submit', (event) => {
       // Si la solicitud es exitosa, se recibe un token de autenticación
       const token = data.token
       // Almacenar el token en el almacenamiento local del navegador
-      window.localStorage.setItem('access', token);
-      const mitoken = window.localStorage.getItem('access');
-      
-fetch('http://127.0.0.1:8000/users/jwt/verify/', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `JWT ${mitoken}`
-  }
-})
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.error) {
-      // maneja el error, por ejemplo, mostrando un mensaje al usuario
-      alert('Error al verificar el token');
-    } else {
-      // maneja el éxito, por ejemplo, permitiendo al usuario acceder a una página protegida
-      window.location.href = "menu.html";
-    }
-  });
+      if (data.message === 'Correo inválido o contraseña incorrecta') {
+        // Mostrar un mensaje de error al usuario
+        alert('Error al iniciar sesión. Por favor, verifica tu correo electrónico y contraseña.');
+      } else {
+        // Almacenar el token en el almacenamiento local del navegador
+        window.localStorage.setItem('access', token);
+        const mitoken = window.localStorage.getItem('access');
+        console.log(mitoken);
+        // Redirigir al usuario a otra página
+        window.location.href = "menu.html";
+      }
     })
-
     .catch((error) => {
       // Si hay un error, mostrar un mensaje de error al usuario
       console.error(error);
-      alert('Error al iniciar sesión. Por favor, verifica tus datos.');
+      if (error.response.status === 401) {
+        alert('Error al iniciar sesión. Por favor, verifica tu correo electrónico y contraseña.');
+      } else {
+        alert('Error al iniciar sesión. Por favor, vuelve a intentarlo más tarde.');
+      }
     });
 });

@@ -14,25 +14,26 @@
 </head>
 
 <body>
-    <header>
-        <iframe src="navbar.html" style="width: 100%;"></iframe>
-    </header>
+    
+    <header id="navbar-container"></header>
+    
+    
     <main>
         <div class="container border bg-light ">
             <div>
                 <h2>Pagos Realizados</h2>
-                <div class="container border bg-success " style="border-radius: .75rem;">
+                <div class="container border bg-success">
                     <label for="">logo</label>
                     <label for="">Servicio</label>
                     <label for="">Fecha de Pago</label>
                     <label for="">Monto</label>
-
+                    <label for="">Penalidad</label>
                 </div>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsePagosRealizados" role="button"
+                <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapsePagosVencidos" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
                     ver mas
                 </a>
-                <div class="collapse" id="collapsePagosRealizados">
+                <div class="collapse" id="collapsePagosVencidos">
                     <div class="container border bg-success " style="border-radius: .75rem;">
                         <label for="">logo</label>
                         <label for="">Servicio</label>
@@ -41,7 +42,6 @@
 
                     </div>
                 </div>
-            </div>
             <div>
                 <h2>Pagos Vencidos</h2>
                 <div class="container border bg-success">
@@ -68,6 +68,7 @@
 
         </div>
     </main>
+    <script src="js/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
         </script>
