@@ -13,3 +13,15 @@ function loadNavbar() {
   }
   
   loadNavbar();
+  $.ajax({
+    url: '/api/user',
+    type: 'GET',
+    success: function(response) {
+      // Comprobamos si el usuario es administrador
+      if (response.esAdministrador) {
+        // Si es administrador, mostramos el enlace adicional
+        $('#admin-link').removeClass('d-none');
+      }
+    }
+  });
+  
