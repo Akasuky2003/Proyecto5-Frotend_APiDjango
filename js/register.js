@@ -11,7 +11,12 @@ registerForm.addEventListener('submit', (event) => {
     // Validar los campos del formulario (asegurarse de que todos los campos estén llenos y que las contraseñas coincidan)
     if (!name || !email || !password || !passwordConfirmation || password !== passwordConfirmation) {
         // Mostrar un mensaje de error al usuario
-        alert('Por favor, verifica que hayas llenado todos los campos y que las contraseñas coincidan.');
+        Swal.fire({
+            title: 'Has llenado Todo los campos?',
+            text: "Por favor, verifica que hayas llenado todos los campos y que las contraseñas coincidan.",
+            icon: 'warning',
+          })
+        
         return;
     }
 
@@ -30,18 +35,43 @@ registerForm.addEventListener('submit', (event) => {
         .then((response) => response.json())
         .then((data) => {
             // Si la solicitud es exitosa, mostrar un mensaje de éxito al usuario y redirigirlo a la página de inicio de sesión
-            alert('¡Te has registrado con éxito! Ya puedes iniciar sesión.');
-            window.location.href = "index.html";
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: '¡Te has registrado con éxito! Ya puedes iniciar sesión.',
+                showConfirmButton: false,
+                timer: 1300
+              }).then(() => {
+                window.location.href = "index.html";
+              });
         })
         .catch((error) => {
             // Si hay un error, mostrar un mensaje de error al usuario
             console.error(error);
             if (error.response.status === 400) {
-                alert('Error al registrarse. Por favor, verifica que hayas llenado todos los campos correctamente.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al registrarse. Por favor, verifica que hayas llenado todos los campos correctamente.',
+                    
+                  })
+                
             } else if (error.response.status === 409) {
-                alert('Error al registrarse. Ya existe un usuario con ese correo electrónico.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al registrarse. Ya existe un usuario con ese correo electrónico.',
+                    
+                  })
+                
             } else {
-                alert('Error al registrarse. Por favor, vuelve a intentarlo más tarde.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al registrarse. Por favor, vuelve a intentarlo más tarde.',
+                    
+                  })
+                
             }
         });
 });

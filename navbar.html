@@ -37,17 +37,22 @@
           </ul>
         </div>
   
-        <!-- Área de usuario -->
+        <!-- Área de usuario https://www.gravatar.com/avatar/[EMAIL HASH]?s=[SIZE]&d=[DEFAULT IMAGE] -->
         <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="#">
-            <img src="https://www.gravatar.com/avatar/[EMAIL HASH]?s=[SIZE]&d=[DEFAULT IMAGE]" alt="Imagen de usuario" class="rounded-circle" style="width: 40px;">
-            Nombre de usuario
+          <a class="nav-link" >
+            <img id="gravatar" src="" alt="Gravatar del usuario" class="rounded-circle" style="width: 40px;">
+            <p id="usernamenavbar">{{ user.userName }}</p>
+            <p id="emailnavbar">{{ user.email }}</p>
           </a>
+          <button onclick="cerrarSesion()">Cerrar sesión</button>
         </div>
       </div>
     </nav>
   </header>
-  <script src="js/img.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script src="js/usuario.js"></script>
+  <!--<script src="js/navbarAdmin.js"></script>-->
+  <!--<script src="js/img.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
         </script>
